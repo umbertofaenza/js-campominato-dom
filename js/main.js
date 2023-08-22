@@ -3,29 +3,38 @@ const emptyBtn = document.getElementById("empty-btn");
 const grid = document.getElementById("grid");
 const difficultySelect = document.getElementById("difficulty-select");
 const bombsArray = [];
+const clickedCells = [];
 
 // # FUNCTIONS
 
-// function to generate a cell
+// generate a cell
 function generateCell() {
   const cell = document.createElement("div");
   cell.classList.add("cell");
 
   cell.addEventListener("click", function () {
-    this.classList.add("clicked");
-    console.log(this.innerText);
-
     if (bombsArray.includes(parseInt(cell.innerText))) {
       cell.classList.add("bomb");
       alert("BOOM!");
+      gameOver();
+    } else {
+      cell.classList.add("clicked");
+      console.log(cell.innerText);
+      clickedCells.push(parseInt(cell.innerText));
+      console.log(clickedCells.length);
+    }
+
+    if ((clickedCells.length = 48)) {
+      gameOver();
     }
   });
 
   return cell;
 }
 
-// function to generate a grid with the number of cells we want
+// generate a grid with the number of cells we want
 function generateGrid(totalCells) {
+  clickedCells.splice(0, clickedCells.length);
   bombsArray.splice(0, bombsArray.length);
   generateBombs(1, 100, 16);
   console.log(bombsArray);
@@ -46,7 +55,7 @@ function generateGrid(totalCells) {
   }
 }
 
-// function to generate bombs (range of random nums, number of bombs)
+// generate bombs (range of random nums, number of bombs)
 function generateBombs(min, max, bombs) {
   while (bombsArray.length < bombs) {
     const randomNumber = Math.floor(Math.random() * (max - min + 1) + min);
@@ -55,6 +64,12 @@ function generateBombs(min, max, bombs) {
       bombsArray.push(randomNumber);
     }
   }
+}
+
+// game over
+function gameOver() {
+  alert("Cells clicked: " + clickedCells.length);
+  alert("Game Over - Create a new grid");
 }
 
 // # BUTTONS
