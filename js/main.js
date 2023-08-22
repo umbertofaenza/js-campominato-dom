@@ -24,7 +24,7 @@ function generateCell() {
       console.log(clickedCells.length);
     }
 
-    if ((clickedCells.length = 48)) {
+    if ((clickedCells.length = 84)) {
       gameOver();
     }
   });
