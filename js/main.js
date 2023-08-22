@@ -4,6 +4,7 @@ const grid = document.getElementById("grid");
 const difficultySelect = document.getElementById("difficulty-select");
 const bombsArray = [];
 const clickedCells = [];
+let isGameOver;
 
 // # FUNCTIONS
 
@@ -13,15 +14,17 @@ function generateCell() {
   cell.classList.add("cell");
 
   cell.addEventListener("click", function () {
-    if (bombsArray.includes(parseInt(cell.innerText))) {
-      cell.classList.add("bomb");
-      alert("BOOM!");
-      gameOver();
-    } else {
-      cell.classList.add("clicked");
-      console.log(cell.innerText);
-      clickedCells.push(parseInt(cell.innerText));
-      console.log(clickedCells.length);
+    if (!isGameOver) {
+      if (bombsArray.includes(parseInt(cell.innerText))) {
+        cell.classList.add("bomb");
+        alert("BOOM!");
+        gameOver();
+      } else {
+        cell.classList.add("clicked");
+        console.log(cell.innerText);
+        clickedCells.push(parseInt(cell.innerText));
+        console.log(clickedCells.length);
+      }
     }
 
     if (clickedCells.length == 84) {
@@ -68,6 +71,7 @@ function generateBombs(min, max, bombs) {
 
 // game over
 function gameOver() {
+  isGameOver = true;
   alert("Cells clicked: " + clickedCells.length);
   alert("Game Over - Create a new grid");
 }
