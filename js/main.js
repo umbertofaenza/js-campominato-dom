@@ -14,6 +14,11 @@ function generateCell() {
   cell.addEventListener("click", function () {
     this.classList.add("clicked");
     console.log(this.innerText);
+
+    if (bombsArray.includes(parseInt(cell.innerText))) {
+      cell.classList.add("bomb");
+      alert("BOOM!");
+    }
   });
 
   return cell;
