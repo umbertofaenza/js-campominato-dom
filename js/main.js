@@ -26,6 +26,7 @@ function generateCell() {
 
 // function to generate a grid with the number of cells we want
 function generateGrid(totalCells) {
+  bombsArray.splice(0, bombsArray.length);
   generateBombs(1, 100, 16);
   console.log(bombsArray);
 
