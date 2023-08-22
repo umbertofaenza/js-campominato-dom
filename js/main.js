@@ -37,6 +37,7 @@ function generateCell() {
 
 // generate a grid with the number of cells we want
 function generateGrid(totalCells) {
+  isGameOver = false;
   clickedCells.splice(0, clickedCells.length);
   bombsArray.splice(0, bombsArray.length);
   generateBombs(1, 100, 16);
