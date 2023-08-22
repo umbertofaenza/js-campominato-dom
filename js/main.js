@@ -4,7 +4,7 @@ const grid = document.getElementById("grid");
 const difficultySelect = document.getElementById("difficulty-select");
 const bombsArray = [];
 const clickedCells = [];
-let isGameOver;
+let isGameOver = false;
 
 // # FUNCTIONS
 
