@@ -2,6 +2,9 @@ const createBtn = document.getElementById("create-btn");
 const emptyBtn = document.getElementById("empty-btn");
 const grid = document.getElementById("grid");
 const difficultySelect = document.getElementById("difficulty-select");
+const bombsArray = [];
+
+// # FUNCTIONS
 
 // function to generate a cell
 function generateCell() {
@@ -33,6 +36,19 @@ function generateGrid(totalCells) {
     grid.append(generatedCell);
   }
 }
+
+// function to generate bombs
+function generateBombs(min, max, bombs) {
+  while (bombsArray.length < bombs) {
+    const randomNumber = Math.floor(Math.random() * (max - min + 1) + min);
+
+    if (!bombsArray.includes(randomNumber)) {
+      bombsArray.push(randomNumber);
+    }
+  }
+}
+
+// # BUTTONS
 
 // button to generate grid
 createBtn.addEventListener("click", function () {
