@@ -46,7 +46,7 @@ function generateGrid(totalCells) {
   }
 }
 
-// function to generate bombs
+// function to generate bombs (range of random nums, number of bombs)
 function generateBombs(min, max, bombs) {
   while (bombsArray.length < bombs) {
     const randomNumber = Math.floor(Math.random() * (max - min + 1) + min);
